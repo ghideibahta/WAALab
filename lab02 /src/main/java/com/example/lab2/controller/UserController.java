@@ -18,11 +18,10 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    /*@Autowired
-    PostService postService;*/
 
     @GetMapping()
     public List<UserDto> findAll() {
+
         return userService.findAll();
     }
 
@@ -34,11 +33,20 @@ public class UserController {
 
    @GetMapping("/{id}")
     public UserDto getUserById(@PathVariable("id") long id) {
+
         return userService.getUserById(id);
     }
-    @GetMapping("/{id}/posts")
+
+    /*@GetMapping("/{id}/posts")
     public List<PostDto> getPostsUser(@PathVariable long id) {
         return userService.getPostsById(id);
+    }*/
+
+    @GetMapping("/{id}/posts")
+    public List<PostDto> getUserPostById(@PathVariable("id") long id) {
+        System.out.println("********** in controller******");
+        return userService.getUserPostById(id);
+
     }
 
 }

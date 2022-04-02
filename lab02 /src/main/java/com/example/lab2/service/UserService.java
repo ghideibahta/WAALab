@@ -12,10 +12,7 @@ public interface UserService {
     void save(User u);
     List<UserDto> findAll();
     UserDto getUserById(long id);
-    List<PostDto> getPostsById(long id);
+    //List<PostDto> getPostsById(long id);
 
-
-
-
-
+    List<PostDto> getUserPostById(long id);
 }

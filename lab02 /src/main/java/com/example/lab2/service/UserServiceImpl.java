@@ -23,6 +23,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     ListMapper<User, UserDto> listMapperDto;
+
+    @Autowired
     ListMapper<Post, PostDto> listMapperpostDto;
 
     @Override
@@ -43,9 +45,15 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
+   /* @Override
     public List<PostDto> getPostsById(long id){
         return (List<PostDto>) listMapperpostDto.mapList(userRepo.getPostsById(id),new PostDto());
+    }*/
+
+    @Override
+    public List<PostDto> getUserPostById(long id) {
+        return (List<PostDto>) listMapperpostDto.mapList(userRepo.getPostsByUserId(id), new PostDto());
+
     }
 }
 
