@@ -1,6 +1,7 @@
 package com.example.lab2.service;
 
 
+import com.example.lab2.domain.Post;
 import com.example.lab2.domain.User;
 import com.example.lab2.domain.dto.PostDto;
 import com.example.lab2.domain.dto.UserDto;
@@ -15,4 +16,6 @@ public interface UserService {
     //List<PostDto> getPostsById(long id);
 
     List<PostDto> getUserPostById(long id);
+
+    void addPost(long userId, Post post);
 }

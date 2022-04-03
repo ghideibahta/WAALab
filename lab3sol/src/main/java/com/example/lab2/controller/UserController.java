@@ -1,12 +1,12 @@
 package com.example.lab2.controller;
 
+import com.example.lab2.domain.Comment;
 import com.example.lab2.domain.Post;
 import com.example.lab2.domain.User;
 import com.example.lab2.domain.dto.PostDto;
 import com.example.lab2.domain.dto.UserDto;
 import com.example.lab2.service.PostService;
 import com.example.lab2.service.UserService;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,10 +20,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
-
     @GetMapping()
     public List<UserDto> findAll() {
-
         return userService.findAll();
     }
 
@@ -39,29 +37,31 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    /*@GetMapping("/{id}/posts")
-    public List<PostDto> getPostsUser(@PathVariable long id) {
-        return userService.getPostsById(id);
-    }*/
-
     @GetMapping("/{id}/posts")
-    public List<PostDto> getUserPostById(@PathVariable("id") long id) {
+    public List<PostDto> getUserPostsById(@PathVariable("id") long id) {
         System.out.println("********** in controller******");
-        return userService.getUserPostById(id);
+        return userService.getUserPostsById(id);
 
     }
 
-   /* @PostMapping("/{id}/posts")
-    public void addPost(@PathVariable long id, @RequestBody Post post)
-    {
-        System.out.println(" **** controller***");
-        userService.addPost(id, post);
-    }*/
+    @PostMapping("/{id}/addpost")
+    public void addPost(@PathVariable long id, @RequestBody Post post){
+        System.out.println("#####UserController");
+        userService.addPast(id,post);
 
+    }
 
+    @DeleteMapping("/{id}/users")
+    public void  deleteById(@PathVariable("id") long id){
 
+        userService.deleteById(id);
+    }
 
+    @GetMapping("/{n}/*")
+    public List<User> findAllUsersHaveMoreThan(@PathVariable int n){
 
+        return userService.findAllUsersHaveMoreThan(n);
+    }
 
 }
 

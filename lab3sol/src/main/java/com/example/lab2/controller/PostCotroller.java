@@ -1,5 +1,6 @@
 package com.example.lab2.controller;
 
+import com.example.lab2.domain.Comment;
 import com.example.lab2.domain.Post;
 import com.example.lab2.domain.dto.PostDto;
 import com.example.lab2.service.PostService;
@@ -23,7 +24,6 @@ public class PostCotroller {
     }
 
     @GetMapping("/{id}")
-
     public PostDto getPostById(@PathVariable("id") int id) {
 
         return postService.getPostById(id);
@@ -40,18 +40,22 @@ public class PostCotroller {
         postService.deletePost(id);
     }*/
 
-    /*@PutMapping ("/{id}")
+   /* @PutMapping ("/{id}")
     public void updatePost(@PathVariable("id") int id, @RequestBody Post pd){
         postService.updatePost(id, pd);
     }*/
+    @GetMapping("/{id}/comments")
+    public List<Comment> getPostsCommentsById(@PathVariable("id") long id) {
+        System.out.println("********** in controller******");
+        return postService.getPostsCommentsById(id);
 
-     /* @PostMapping("/{id}/posts")
-    public void addPost(@PathVariable long id, @RequestBody Post post)
-    {
-        System.out.println(" **** controller***");
-        PostCotroller userService;
-        postService.addPost(id, post);
-    }*/
+    }
+
+    @GetMapping("/post/{title}")
+    public List<PostDto> findPostsByTitle(@RequestBody String title){
+
+        return postService.findPostsByTitle(title);
+    }
 
 
 

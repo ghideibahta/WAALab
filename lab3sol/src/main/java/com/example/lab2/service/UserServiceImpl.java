@@ -9,6 +9,7 @@ import com.example.lab2.repo.UserRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     ListMapper<Post, PostDto> listMapperpostDto;
+
 
     @Override
     public void save(User u) {
@@ -45,28 +47,41 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public List<PostDto> getPostsById(long id){
+        return (List<PostDto>) listMapperpostDto.mapList(userRepo.getPostsById(id),new PostDto());
+    }
 
     @Override
-    public List<PostDto> getUserPostById(long id) {
-        return (List<PostDto>) listMapperpostDto.mapList(userRepo.getPostsByUserId(id), new PostDto());
+    public List<PostDto> getUserPostsById(long id) {
+        return (List<PostDto>) listMapperpostDto.mapList(userRepo.getUserPostsById(id), new PostDto());
 
     }
 
     @Override
-    public void addPost(long userId, Post post) {
-
-        System.out.println("before adding to the list" + post);
-        User user = userRepo.getUserById(userId);
-        user.setPosts((List<Post>) post);
-
-        /*List<Post> posts = user.getPosts();
-        posts.add(modelMapper.map(post, Post.class));
-        user.setPosts(posts);
-        System.out.println("***");
-        System.out.println(user);
-        userRepo.save(user);*/
-
+    public void deleteById(long id) {
+       userRepo.deleteById(id);
     }
+
+    @Override
+    public List<User> findAllUsersHaveMoreThan(int n) {
+        return userRepo.findAllUsersHaveMoreThan(n);
+    }
+
+    @Override
+    public void addPast(long id, Post post) {
+        
+            User user = userRepo.getUserById(id);
+            List<Post> posts = user.getPosts();
+            posts.add(modelMapper.map(post, Post.class));
+            user.setPosts(posts);
+            System.out.println(user);
+            userRepo.save(user);
+
+        }
+
+
+
 }
 
 

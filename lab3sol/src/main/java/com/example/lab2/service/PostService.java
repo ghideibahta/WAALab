@@ -1,5 +1,6 @@
 package com.example.lab2.service;
 
+import com.example.lab2.domain.Comment;
 import com.example.lab2.domain.Post;
 import com.example.lab2.domain.dto.PostDto;
 
@@ -12,11 +13,10 @@ public interface PostService {
     List<PostDto> findAll();
     PostDto getPostById(int id);
 
+    List<Comment> getPostsCommentsById(long id);
+
+    List<PostDto> findPostsByTitle(String title);
 
 
-    //void deletePost(long id);
-   /* void updatePost(int id, Post pd);
-
-}*/
 
 }
