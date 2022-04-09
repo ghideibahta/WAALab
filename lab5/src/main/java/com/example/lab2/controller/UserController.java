@@ -23,8 +23,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RolesAllowed("USER")
-    @GetMapping("/*")
+
+    @GetMapping()
     public List<User> findAll() {
         return userService.findAll();
     }
@@ -33,10 +33,10 @@ public class UserController {
     @PostMapping()
     public void save(@RequestBody User u) {
         userService.save(u);
-
     }
-    @RolesAllowed({"USER","ADMIN"})
+
     @ExecutionTime
+    @RolesAllowed({"USER","ADMIN"})
    @GetMapping("/admin/{id}")
     public User getUserById(@PathVariable("id") long id) {
 
