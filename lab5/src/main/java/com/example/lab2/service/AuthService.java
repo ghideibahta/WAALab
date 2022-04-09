@@ -1,0 +1,11 @@
+package com.example.lab2.service;
+
+import com.example.lab2.domain.dto.request.LoginRequest;
+import com.example.lab2.domain.dto.request.RefreshTokenRequest;
+import com.example.lab2.domain.dto.response.LoginResponse;
+
+public interface AuthService {
+
+    LoginResponse login(LoginRequest loginRequest);
+    LoginResponse refreshToken(RefreshTokenRequest refreshTokenRequest);
+}
