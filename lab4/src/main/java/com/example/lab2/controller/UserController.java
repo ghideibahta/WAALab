@@ -21,10 +21,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
     @GetMapping()
     public List<UserDto> findAll() {
         return userService.findAll();
     }
+
+
 
     @PostMapping
     public void save(@RequestBody User u) {

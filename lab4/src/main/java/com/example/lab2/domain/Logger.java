@@ -22,7 +22,7 @@ public class Logger {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
     private LocalDate date;
-    private LocalDate time;
+    private long time;
     private String principle;
     private String Operation;
 

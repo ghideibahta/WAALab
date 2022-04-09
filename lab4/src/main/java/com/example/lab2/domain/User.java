@@ -22,7 +22,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private double price;
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "user_id")
