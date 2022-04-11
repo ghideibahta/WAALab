@@ -9,6 +9,7 @@ import com.example.lab2.domain.dto.UserDto;
 import com.example.lab2.service.PostService;
 import com.example.lab2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,14 +31,15 @@ public class UserController {
     }
 
 
-    @PostMapping()
+    @PostMapping("/admin")
     public void save(@RequestBody User u) {
         userService.save(u);
     }
 
     @ExecutionTime
-    @RolesAllowed({"USER","ADMIN"})
-   @GetMapping("/admin/{id}")
+
+    //@RolesAllowed({"USER","ADMIN"})
+   @GetMapping("/{id}")
     public User getUserById(@PathVariable("id") long id) {
 
         return userService.getUserById(id);
@@ -50,12 +52,14 @@ public class UserController {
         userService.deleteById(id);
     }
 
+
     @GetMapping("/{id}/posts")
     public List<PostDto> getUserPostsById(@PathVariable("id") long id) {
         System.out.println("********** in controller******");
         return userService.getUserPostsById(id);
 
     }
+
 
     @PostMapping("/{id}/*")
     public void addPost(@PathVariable long id, @RequestBody Post post){
