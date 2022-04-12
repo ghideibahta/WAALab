@@ -1,0 +1,23 @@
+.Posts {
+    width: 45%;
+    margin: 2px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    text-align: center;
+}
+
+.Post button {
+    margin: 5px 0;
+    padding: 1px;
+    font: inherit;
+    border: 1px solid #fa923f;
+    background-color: transparent;
+    color: #fa923f;
+    cursor: pointer;
+}
+
+.Post button:hover,
+.Post button:active {
+    color: white;
+    background-color: blue;
+}
