@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Post from "../../components/Post/Post";
-import Posts from "../../containers/Postss/Postss";
-//import "./DashBoard.css";
+import Posts from "../../components/Posts/Posts";
 
 
 const DashBoard = () => {
