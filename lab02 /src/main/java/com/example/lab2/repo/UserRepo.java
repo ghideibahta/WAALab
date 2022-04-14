@@ -21,7 +21,9 @@ public interface UserRepo extends CrudRepository<User, Long> {
     @Query(value = "select u.posts from User  u where u.id=:id" )
     List<Post> getPostsByUserId(long id);
 
-    @Query("select u from User u where u.id=:id")//, nativeQuery = true)
-    void addPost(long userId, PostDto post);
+    /*@Query("select u from User u where u.id=:id")//, nativeQuery = true)
+    void addPost(long userId, PostDto post);*/
+
+
 
 }

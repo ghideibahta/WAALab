@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
+
 public class UserController {
 
     @Autowired
@@ -51,12 +52,12 @@ public class UserController {
 
     }
 
-   /* @PostMapping("/{id}/posts")
+    @PostMapping("/{id}/posts")
     public void addPost(@PathVariable long id, @RequestBody Post post)
     {
         System.out.println(" **** controller***");
         userService.addPost(id, post);
-    }*/
+    }
 
 
 

@@ -59,12 +59,12 @@ public class UserServiceImpl implements UserService {
         User user = userRepo.getUserById(userId);
         user.setPosts((List<Post>) post);
 
-        /*List<Post> posts = user.getPosts();
+        List<Post> posts = user.getPosts();
         posts.add(modelMapper.map(post, Post.class));
         user.setPosts(posts);
         System.out.println("***");
         System.out.println(user);
-        userRepo.save(user);*/
+        userRepo.save(user);
 
     }
 }
