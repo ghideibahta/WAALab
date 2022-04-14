@@ -11,19 +11,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/posts")
+@CrossOrigin("http://localhost:3001/")
 public class PostCotroller {
 
     @Autowired
     PostService postService;
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping
     public List<PostDto> findAll(){
-
         return postService.findAll();
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
-
     public PostDto getPostById(@PathVariable("id") int id) {
 
         return postService.getPostById(id);
