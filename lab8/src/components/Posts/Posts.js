@@ -27,7 +27,7 @@ const Posts = (props) => {
         useEffect(() => {
           fetchPosts();
         },
-        [])
+        [props.fetchFlag])
 
 
     const postsList = posts.map(post => {
@@ -36,10 +36,10 @@ const Posts = (props) => {
             title={post.title} 
             author={post.author} 
             key={post.id}
-            setSelcted={ () => {props.setSelcted(post.id)}}
+            setSelected={ () => {props.setSelected(post.id)}}
             
         />
-    });
+    })
     return postsList;
 }
 

@@ -25,4 +25,6 @@ public interface PostRepo extends CrudRepository<Post, Long> {
    // List<Post> findByTitle(@Param("title") String title);
     List<Post> findPostsByTitle(String title);
 
+    void deleteById(long id);
+
 }

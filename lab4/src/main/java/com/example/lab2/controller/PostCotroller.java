@@ -12,7 +12,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/posts")
-@CrossOrigin("http://localhost:3001/")
+@CrossOrigin("http://localhost:3000/")
+
 public class PostCotroller {
 
     @Autowired
@@ -55,6 +56,12 @@ public class PostCotroller {
     @PostMapping("/addpost")
     public void addPost(@RequestBody PostDto post){
         postService.addPost(post);
+    }
+
+    @DeleteMapping("/{id}")
+
+    public void deleteById(@PathVariable long id){
+        postService.deleteById(id);
     }
 
 

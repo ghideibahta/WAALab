@@ -19,4 +19,6 @@ public interface PostService {
 
 
     void addPost(PostDto post);
+
+    void deleteById(long id);
 }

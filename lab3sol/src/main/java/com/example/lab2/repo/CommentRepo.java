@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface CommentRepo extends CrudRepository<Comment, Long> {
 
 
-
+    void addComment(int id, Comment c);
 }

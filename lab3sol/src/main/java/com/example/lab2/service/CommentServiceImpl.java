@@ -15,11 +15,12 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> findAll() {
-        return null;
+
+        return (List<Comment>)commentRepo.findAll();
     }
 
     @Override
     public void addComment(int id, Comment c) {
-         // Post
+         commentRepo.addComment(id,c);
     }
 }

@@ -3,6 +3,8 @@
 import React from "react";
 import { useState } from "react";
 import { titleHandler } from "react";
+import NewPost from "../../components/NewPost/NewPost";
+import PostDetails from "../../components/PostDetails/PostDetails";
 
 import Posts from "../../components/Posts/Posts";
 
@@ -12,6 +14,7 @@ const DashBoard = () => {
     const[posts, setPosts] = useState();
     const [title, setTitle] = useState("");
     const[selectedState, setSelectedState] = useState(0);
+    const[fetchFlag,setFetchFlag] = useState(true);
    
  
     /*const titleHandler = (title) => {
@@ -21,7 +24,11 @@ const DashBoard = () => {
 
     const setSelected =(id)=> {
         setSelectedState(id);
-        console.log(selectedState)
+        //console.log(selectedState)
+    }
+
+    const changeFetchFlag = (id) => {
+        setFetchFlag(!fetchFlag);
     }
 
     const onChange = (events) => {
@@ -32,9 +39,21 @@ const DashBoard = () => {
 
     return (
         <div>
-            <fieldset className="form">
-            <Posts />
-                 
+            //<fieldset className="form">
+           <div> <Posts 
+              setSelected={setSelected}
+              fetchFlag={fetchFlag}/>
+            </div>
+            <div>
+                <PostDetails 
+                id ={selectedState} 
+                changeFetchFlag={changeFetchFlag}/>
+            </div>
+            <div> <NewPost 
+                   changeFetchFlag={changeFetchFlag}/>
+                   </div>
+
+       
                 <input
                     type="text"
                     id="newTitle"

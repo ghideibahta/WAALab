@@ -65,5 +65,10 @@ public class PostServiceImpl implements PostService {
         return (List<PostDto>) listMapperTitle.mapList(postRepo.findPostsByTitle(title), new PostDto());
     }
 
+    @Override
+    public void deleteById(long id){
+        postRepo.deleteById(id);
+    }
+
 }
 
