@@ -39,7 +39,7 @@ const DashBoard = () => {
 
     return (
         <div>
-            //<fieldset className="form">
+            <fieldset className="form">
            <div> <Posts 
               setSelected={setSelected}
               fetchFlag={fetchFlag}/>
