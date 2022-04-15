@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Comment from "../Comment/Comment";
-//import './ProductDetails.css';
+import   './PostDetails.css';
 
 const PostDetails = (props) => {
 
