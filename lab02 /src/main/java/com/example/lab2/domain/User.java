@@ -25,6 +25,6 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "user_id")
-    private List<Post> posts;
+    List<Post> posts;
 
 }

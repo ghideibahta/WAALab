@@ -10,12 +10,13 @@ import java.util.List;
 
 public interface UserService {
 
-    void save(User u);
-    List<UserDto> findAll();
-    UserDto getUserById(long id);
-    //List<PostDto> getPostsById(long id);
-
-    List<PostDto> getUserPostById(long id);
-
-    void addPost(long userId, Post post);
+    public List<UserDto> findAll();
+    public User findById (long id);
+    public void addUser(User user);
+    public List<Post> getPostsForUser(long id);
+    public List<User> getUsersPostsGreaterThanOne();
 }
+
+
+
+

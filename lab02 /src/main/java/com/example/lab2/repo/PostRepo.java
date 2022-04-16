@@ -16,7 +16,7 @@ public interface PostRepo extends CrudRepository<Post, Long> {
     Post getPostById(long id);
 
     User getUserById(long userId);
-    //public void deletePost(long id);
+
 
 
 

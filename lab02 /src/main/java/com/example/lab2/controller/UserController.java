@@ -15,52 +15,32 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
-
 public class UserController {
+
 
     @Autowired
     UserService userService;
 
-
-    @GetMapping()
-    public List<UserDto> findAll() {
-
+    @GetMapping
+    public List<UserDto> getAll(){
         return userService.findAll();
     }
-
-    @PostMapping
-    public void save(@RequestBody User u) {
-        userService.save(u);
-
+    @GetMapping("/{id}")
+    public User getById(@PathVariable ("id") long id){
+        return userService.findById(id);
     }
-
-   @GetMapping("/{id}")
-    public UserDto getUserById(@PathVariable("id") long id) {
-
-        return userService.getUserById(id);
+    @PostMapping()
+    public void saveUser(@RequestBody User user){
+        userService.addUser(user);
     }
-
-    /*@GetMapping("/{id}/posts")
-    public List<PostDto> getPostsUser(@PathVariable long id) {
-        return userService.getPostsById(id);
-    }*/
-
     @GetMapping("/{id}/posts")
-    public List<PostDto> getUserPostById(@PathVariable("id") long id) {
-        System.out.println("********** in controller******");
-        return userService.getUserPostById(id);
-
+    public List<Post> getPostsByUser(@PathVariable("id") long id){
+        return userService.getPostsForUser(id);
     }
-
-    @PostMapping("/{id}/posts")
-    public void addPost(@PathVariable long id, @RequestBody Post post)
-    {
-        System.out.println(" **** controller***");
-        userService.addPost(id, post);
+    @GetMapping("/filter")
+    public List<User> getMoreThanOne(){
+        return userService.getUsersPostsGreaterThanOne();
     }
-
-
-
 
 
 
