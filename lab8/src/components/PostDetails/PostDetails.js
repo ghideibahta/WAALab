@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Comment from "../Comment/Comment";
 import   './PostDetails.css';
 
@@ -11,10 +11,11 @@ const PostDetails = (props) => {
       axios.get('http://localhost:8080/api/v1/posts/' + props.id + '/comments')
            .then(response => {
              setPostDetail(response.data);
+             console.log("Yes")
            })
            .catch(e => console.log(e.message))
     }, [props.id])
-
+    
 
     const deleteButtonClicked = (id) => {
       axios.delete('http://localhost:8080/api/v1/posts/' + id)
@@ -27,7 +28,7 @@ const PostDetails = (props) => {
   }
 
    
-       
+     const space = <Fragment>&nbsp;&nbsp;</Fragment>;
 
     let postDetailsDisplay = null;
     if(props.id !==0) {
@@ -35,12 +36,12 @@ const PostDetails = (props) => {
      postDetailsDisplay = (
        <div className="ProductDetail">
            <div>Post Details </div>
-           <h1>{postDetail.title}</h1>
+           <h1>{postDetail.id}</h1>
            <div>Comment
                 {postDetail.comments != null ? postDetail.comments
                 .map(comment => {return <Comment  comment ={comment.name} key={comment.id}/>}): null} 
            </div>
-           <button onClick ={ () =>{deleteButtonClicked(props.id)}}> Delete </button>
+           <button onClick ={() =>{deleteButtonClicked(props.id)}}> Delete </button>
        </div>
     );
     }
