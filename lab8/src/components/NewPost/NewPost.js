@@ -1,5 +1,6 @@
  import { useState } from "react";
-import axios from "axios";
+ import axios from "axios";
+
 
   const NewPost = (props) => { 
   const [postState, setPostState] = useState(
@@ -11,20 +12,23 @@ import axios from "axios";
     }
 )
 
+const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json',
+}
+
 const onChange = (events) => {
     const updatedPost = { ...postState, [events.target.name]: events.target.value };
     setPostState(updatedPost);
 }
 
 const addButtonClicked = () => {
-    axios.post('http://localhost:8080/api/v1/posts', postState)
+    axios.post('http://localhost:8080/api/v1/posts', postState, {headers})
         .then(response => {
             setPostState({ id: "", title: "", author: ""});
             props.changeFetchFlag();
         })
-        .catch()
-
-    
+        .catch()           
 }
 
 return (
